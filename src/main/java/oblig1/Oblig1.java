@@ -26,8 +26,12 @@ public class Oblig1 {
         return maks;
     }
 
-    // returnere hvor mange ganger man mp flytte på tall. Men ikke sortere den!
+    // returnere hvor mange ganger man må flytte på tall for å få listen sortert fra
+    // minste til største verdi
     public static int ombyttinger(int[] a) {
+        if (a.length < 2) {
+            throw new java.util.NoSuchElementException("a.length < 2!");
+        }
         int temp;
         int antall = 0;
         for (int i = 0; i < a.length - 1; i++) {
@@ -43,9 +47,26 @@ public class Oblig1 {
 
 
     ///// Oppgave 2 //////////////////////////////////////
+    //Telle opp antall ulike, men skal kun fungere dersom listen er sortert
     public static int antallUlikeSortert(int[] a) {
-        throw new UnsupportedOperationException();
+        int n = ombyttinger(a);
+
+        if (n > 0) { // dette skjer dersom listen ikke er sortert
+            throw new IllegalStateException();
+        }
+
+        int temp = a[0];
+        int count = 1;
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] != temp) {
+                count++;
+                temp = a[i];
+            }
+        }
+        return count;
     }
+
 
     ///// Oppgave 3 //////////////////////////////////////
     public static int antallUlikeUsortert(int[] a) {
