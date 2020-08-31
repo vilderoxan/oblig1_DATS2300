@@ -13,7 +13,7 @@ public class Oblig1 {
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
         if (a.length == 0) {
-            throw new NullPointerException("Arrayet er tomt");
+            throw new java.util.NoSuchElementException ("Arrayet er tomt");
         }
         int maks = a[0];
 
@@ -69,9 +69,22 @@ public class Oblig1 {
 
 
     ///// Oppgave 3 //////////////////////////////////////
+
+    // returnerer antall ulike i en usortert tabell
+    // Kan sortere først og så
     public static int antallUlikeUsortert(int[] a) {
-        throw new UnsupportedOperationException();
+        int count = 0;
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 1; j < a.length; j++) {
+                if (a[i] != a[j]) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
+
+    // 1, 2, 6, 3
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
