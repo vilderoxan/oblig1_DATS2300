@@ -83,7 +83,7 @@ public class Oblig1 {
 
         for (int i = 1; i < a.length; i++) {
             int j = 0;
-            for (j = 0; j < i; j++)
+            for (; j < i; j++)
                 if (a[i] == a[j])
                     break;
 
@@ -93,6 +93,7 @@ public class Oblig1 {
         return count;
     }
 
+    // 1, 4, 1, 4, 2, 3, 2
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
