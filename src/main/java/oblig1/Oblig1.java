@@ -42,23 +42,20 @@ public class Oblig1 {
         return antall;
     }
 
+
+    ///// Oppgave 2 //////////////////////////////////////
     public static boolean erSortert(int[] a) {
-        for (int i = 1; i < a.length; i++) {
-            if (a[i - 1] > a[i]) {
-                return false;
-            }
-        }
+        for (int i = 1; i < a.length; i++)
+            if (a[i - 1] > a[i]) return false;
         return true;
     }
 
-
-    ///// Oppgave 2 //////////////////////////////////////
-    //Telle opp antall ulike, men skal kun fungere dersom listen er sortert
     public static int antallUlikeSortert(int[] a) {
         boolean n = erSortert(a);
         if (!n) {
             throw new IllegalStateException("Listen er ikke sortert stigende");
         }
+
         int count = 1;
 
         if (a.length == 0) {
@@ -79,18 +76,19 @@ public class Oblig1 {
     ///// Oppgave 3 //////////////////////////////////////
 
     public static int antallUlikeUsortert(int[] a) {
-        int count = a.length;
-
         if (a.length == 0) {
-            count = 0;
-        } else {
-            int temp = a[0];
-            for (int i = 1; i < a.length; i++) {
-                if (a[i] == temp) {
-                    count --;
-                    temp = a[i + 1];
-                }
-            }
+            return 0;
+        }
+        int count = 1;
+
+        for (int i = 1; i < a.length; i++) {
+            int j = 0;
+            for (j = 0; j < i; j++)
+                if (a[i] == a[j])
+                    break;
+
+            if (i == j)
+                count++;
         }
         return count;
     }
