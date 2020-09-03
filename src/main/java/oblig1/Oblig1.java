@@ -42,20 +42,23 @@ public class Oblig1 {
         return antall;
     }
 
-
-    ///// Oppgave 2 //////////////////////////////////////
     public static boolean erSortert(int[] a) {
-        for (int i = 1; i < a.length; i++)
-            if (a[i - 1] > a[i]) return false;
+        for (int i = 1; i < a.length; i++) {
+            if (a[i - 1] > a[i]) {
+                return false;
+            }
+        }
         return true;
     }
 
+
+    ///// Oppgave 2 //////////////////////////////////////
+    //Telle opp antall ulike, men skal kun fungere dersom listen er sortert
     public static int antallUlikeSortert(int[] a) {
         boolean n = erSortert(a);
         if (!n) {
             throw new IllegalStateException("Listen er ikke sortert stigende");
         }
-
         int count = 1;
 
         if (a.length == 0) {
@@ -75,21 +78,23 @@ public class Oblig1 {
 
     ///// Oppgave 3 //////////////////////////////////////
 
-    // returnerer antall ulike i en usortert tabell
-    // Kan sortere først og så
     public static int antallUlikeUsortert(int[] a) {
-        int count = 0;
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 1; j < a.length; j++) {
-                if (a[i] != a[j]) {
-                    count++;
+        int count = a.length;
+
+        if (a.length == 0) {
+            count = 0;
+        } else {
+            int temp = a[0];
+            for (int i = 1; i < a.length; i++) {
+                if (a[i] == temp) {
+                    count --;
+                    temp = a[i + 1];
                 }
             }
         }
         return count;
     }
 
-    // 1, 2, 6, 3
 
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
@@ -153,9 +158,9 @@ public class Oblig1 {
     }
 
     public static void main(String[] args) {
-        int[] c = {4, 9, 3, 6, 1, 5, 7, 8, 10, 2};
+        int[] c = {4, 9, 3, 1, 1, 5, 7, 8, 10, 2};
         //System.out.println(ombyttinger(c));
-        System.out.println(maks2(c));
+        System.out.println(antallUlikeUsortert(c));
     }
 
 }  // Oblig1

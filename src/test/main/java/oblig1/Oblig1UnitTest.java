@@ -21,8 +21,6 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void ombyttinger() {
-
-
         int[] a = {6, 5, 4, 3, 2, 1};
         int[] b = {1, 2, 3, 4, 5};
         int[] c = {4, 9, 3, 6, 1, 5, 7, 8, 10, 2};
@@ -38,14 +36,24 @@ class Oblig1UnitTest {
         int[] a = {1, 2, 2, 3, 3};
         int[] b = {1, 1, 1};
         int[] c = {1, 1, 1, 2, 2, 3, 4, 5, 5, 6, 7, 7, 7};
+        int[] d = {};
         assertEquals(3, Oblig1.antallUlikeSortert(a));
         assertEquals(1, Oblig1.antallUlikeSortert(b));
         assertEquals(7, Oblig1.antallUlikeSortert(c));
+        assertEquals(0, Oblig1.antallUlikeSortert(d));
+
     }
 
     @org.junit.jupiter.api.Test
     void antallUlikeUsortert() {
-        assertEquals(true, false, "Implementer antallUlikeUsortert og denne testen");
+        int[] a = {1, 3, 2, 3, 2};
+        int[] b = {1, 1, 1};
+        int[] c = {7, 1, 7, 2, 2, 3, 4, 6, 5, 6, 7, 1, 7};
+        int[] d = {};
+        assertEquals(3, Oblig1.antallUlikeUsortert(a));
+        assertEquals(1, Oblig1.antallUlikeUsortert(b));
+        assertEquals(7, Oblig1.antallUlikeUsortert(c));
+        assertEquals(0, Oblig1.antallUlikeUsortert(d));
     }
 
     @org.junit.jupiter.api.Test
