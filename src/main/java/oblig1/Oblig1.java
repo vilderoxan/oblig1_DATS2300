@@ -44,21 +44,29 @@ public class Oblig1 {
 
 
     ///// Oppgave 2 //////////////////////////////////////
-    //Telle opp antall ulike, men skal kun fungere dersom listen er sortert
-    public static int antallUlikeSortert(int[] a) {
-        int n = ombyttinger(a);
+    public static boolean erSortert(int[] a) {
+        for (int i = 1; i < a.length; i++)
+            if (a[i - 1] > a[i]) return false;
+        return true;
+    }
 
-        if (n > 0) { // dette skjer dersom listen ikke er sortert
-            throw new IllegalStateException();
+    public static int antallUlikeSortert(int[] a) {
+        boolean n = erSortert(a);
+        if (!n) {
+            throw new IllegalStateException("Listen er ikke sortert stigende");
         }
 
-        int temp = a[0];
         int count = 1;
 
-        for (int i = 1; i < a.length; i++) {
-            if (a[i] != temp) {
-                count++;
-                temp = a[i];
+        if (a.length == 0) {
+            count = 0;
+        } else {
+            int temp = a[0];
+            for (int i = 1; i < a.length; i++) {
+                if (a[i] != temp) {
+                    count++;
+                    temp = a[i];
+                }
             }
         }
         return count;
