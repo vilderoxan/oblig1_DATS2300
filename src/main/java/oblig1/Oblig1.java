@@ -78,13 +78,19 @@ public class Oblig1 {
     // returnerer antall ulike i en usortert tabell
     // Kan sortere først og så
     public static int antallUlikeUsortert(int[] a) {
-        int count = 0;
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 1; j < a.length; j++) {
-                if (a[i] != a[j]) {
-                    count++;
-                }
-            }
+        if (a.length == 0) {
+            return 0;
+        }
+        int count = 1;
+
+        for (int i = 1; i < a.length; i++) {
+            int j = 0;
+            for (j = 0; j < i; j++)
+                if (a[i] == a[j])
+                    break;
+
+            if (i == j)
+                count++;
         }
         return count;
     }
@@ -94,6 +100,7 @@ public class Oblig1 {
     ///// Oppgave 4 //////////////////////////////////////
     public static void delsortering(int[] a) {
         throw new UnsupportedOperationException();
+
     }
 
     ///// Oppgave 5 //////////////////////////////////////
@@ -153,9 +160,8 @@ public class Oblig1 {
     }
 
     public static void main(String[] args) {
-        int[] c = {4, 9, 3, 6, 1, 5, 7, 8, 10, 2};
-        //System.out.println(ombyttinger(c));
-        System.out.println(maks2(c));
+
+
     }
 
 }  // Oblig1
