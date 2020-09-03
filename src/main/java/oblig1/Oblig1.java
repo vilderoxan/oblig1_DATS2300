@@ -13,33 +13,30 @@ public class Oblig1 {
     ///// Oppgave 1 //////////////////////////////////////
     public static int maks(int[] a) {
         if (a.length == 0) {
-            throw new java.util.NoSuchElementException ("Arrayet er tomt");
+            throw new java.util.NoSuchElementException("Arrayet er tomt");
         }
-        int maks = a[0];
+        int maks;
 
-        for (int i = 1; i < a.length; i++) {
-            if (a[i] > maks) {
-                maks = a[i];
-
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] > a[i + 1]) {
+                int temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
             }
         }
+        maks = a[a.length - 1];
         return maks;
     }
 
-    // returnere hvor mange ganger man må flytte på tall for å få listen sortert fra
-    // minste til største verdi
+
     public static int ombyttinger(int[] a) {
-        if (a.length < 2) {
-            throw new java.util.NoSuchElementException("a.length < 2!");
-        }
-        int temp;
         int antall = 0;
         for (int i = 0; i < a.length - 1; i++) {
             if (a[i] > a[i + 1]) {
-                temp = a[i];
+                int temp = a[i];
                 a[i] = a[i + 1];
                 a[i + 1] = temp;
-                antall++;
+                antall++;  // inversjon = true
             }
         }
         return antall;
@@ -129,6 +126,28 @@ public class Oblig1 {
 
     public static boolean inneholdt(String a, String b) {
         throw new UnsupportedOperationException();
+    }
+
+    public static int maks2(int[] a)   // versjon 2 av maks-metoden
+    {
+        int m = 0;             // indeks til største verdi
+        int maksverdi = a[0];  // største verdi
+        int antall = 0;
+
+        for (int i = 1; i < a.length; i++)
+            if (a[i] > maksverdi) {
+                maksverdi = a[i];  // største verdi oppdateres
+                m = i;             // indeks til største verdi oppdaters
+                antall++;
+            }
+        return antall;  // returnerer indeks/posisjonen til største verdi
+
+    }
+
+    public static void main(String[] args) {
+        int[] c = {4, 9, 3, 6, 1, 5, 7, 8, 10, 2};
+        //System.out.println(ombyttinger(c));
+        System.out.println(maks2(c));
     }
 
 }  // Oblig1

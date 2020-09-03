@@ -1,0 +1,49 @@
+
+Teorispørsmål til oblig 1:
+
+Maks-metoden:
+
+I en metode av typen maks er det først og fremst antall sammenligninger av tabellverdier vi
+er opptatt av. Hvor mange (som funksjon av n) blir det for en tabell med n verdier.
+
+Svar:
+I første gjennomgang blir det n-1 sammenligninger. Dermed går man videre til neste indeks og det blir n-2
+sammenligninger. Det fører til n(n-1)/2 sammenligninger.
+
+
+- Når blir det flest ombyttinger?
+
+Svar:
+Når det største tallet er lengst til venstre i tabellen fordi a[i] > a[i + 1] vil alltid være sann.
+Dermed vil man alltid gå inn i if-setningen.
+
+I værste fall så blir det n(n-1) / 2 ombyttinger og det skjer hvis tabellen er sortert avtagende.
+
+- Når blir det færrest?
+
+Svar:
+Når en permutasjon er sortert stigende, altså fra minst til størst så vil det bli null inversjoner
+og dermed null ombyttinger.
+
+Dersom permutasjonen ikke er sortert så kan man ikke vite. Selv om det største tallet ligger bakers
+i tabellen så kan a[i] > a[i + 1] likevel være sann for hver iterasjon, altså at man kan alltid ha
+et tall som er større enn et annet tall for hver sammenligning.
+
+
+- Hvor mange blir det i gjennomsnitt?
+
+Svar:
+Siden værste fall er n(n-1) / 2 ombyttinger og beste fall er ingen ombyttinger så vil gjennomsnittet
+bli n(n-1)/4 ombyttinger
+
+
+- Lag tilfeldige permutasjoner av tallene fra 1 til n og bruk så metoden.
+  På den måten kan du få en indikasjon på hvor mange det blir i gjennomsnitt (det finnes en
+  formel for gjennomsnittet). Kan du på grunnlag av dette si om metoden maks er bedre (eller
+  dårligere) enn de maks-metodene vi har sett på tidligere?
+
+  Svar:
+
+  Begge maks-metodene må uansett løpe igjennom
+
+
