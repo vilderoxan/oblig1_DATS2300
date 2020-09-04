@@ -1,6 +1,7 @@
 package oblig1;
 
 import java.lang.UnsupportedOperationException;
+import java.util.Arrays;
 
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
@@ -102,8 +103,23 @@ public class Oblig1 {
 
     ///// Oppgave 5 //////////////////////////////////////
     public static void rotasjon(char[] a) {
-        throw new UnsupportedOperationException();
+        int n = a.length;
+        if (n < 2) {
+            return;
+        }
+        int d = 1;
+        char temp = a[0];  // tar vare på verdien i indeks 0
+
+        for (int i = -d, j = 0; i != 0; i -= d)  // stopper i 0
+        {
+            if (i < 0) i += a.length;     // sjekker fortegnet til indeks i
+            a[j] = a[i];            // kopierer
+            j = i;                  // oppdaterer indeks j
+        }
+        a[d] = temp;        // legger tilbake verdien
+        System.out.println(Arrays.toString(a));
     }
+
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
@@ -159,7 +175,9 @@ public class Oblig1 {
     public static void main(String[] args) {
         int[] c = {4, 9, 3, 1, 1, 5, 7, 8, 10, 2};
         //System.out.println(ombyttinger(c));
-        System.out.println(antallUlikeUsortert(c));
+        //System.out.println(antallUlikeUsortert(c));
+        char[] a = "ABC".toCharArray();
+        rotasjon(a);
     }
 
 }  // Oblig1
