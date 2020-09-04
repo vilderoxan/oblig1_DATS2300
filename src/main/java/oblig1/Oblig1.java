@@ -2,6 +2,8 @@ package oblig1;
 
 import java.lang.UnsupportedOperationException;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
+
 
 ////// Løsningsforslag Oblig 1 ////////////////////////
 
@@ -97,8 +99,127 @@ public class Oblig1 {
     // 1, 4, 1, 4, 2, 3, 2
 
     ///// Oppgave 4 //////////////////////////////////////
-    public static void delsortering(int[] a) {
-        throw new UnsupportedOperationException();
+
+
+    public static void fratilKontroll(int tabellengde, int fra, int til) {
+        if (fra < 0)                                  // fra er negativ
+            throw new ArrayIndexOutOfBoundsException
+                    ("fra(" + fra + ") er negativ!");
+
+        if (til > tabellengde)                          // til er utenfor tabellen
+            throw new ArrayIndexOutOfBoundsException
+                    ("til(" + til + ") > tablengde(" + tabellengde + ")");
+
+        if (fra > til)                                // fra er større enn til
+            throw new IllegalArgumentException
+                    ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
+
+        if (fra == til)
+            throw new NoSuchElementException
+                    ("fra(" + fra + ") = til(" + til + ") - tomt tabellintervall!");
+    }
+
+    public static void bytt(int[] a, int i, int j) {
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    private static int parter0(int[] a, int v, int h, int skilleverdi) {
+        while (true)                                  // stopper når v > h
+        {
+            while (v <= h && a[v] < skilleverdi) v++;   // h er stoppverdi for v
+            while (v <= h && a[h] >= skilleverdi) h--;  // v er stoppverdi for h
+
+            if (v < h) bytt(a, v++, h--);
+            else return v;  // a[v] er nåden første som ikke er mindre enn skilleverdi
+        }
+    }
+
+    private static int sParter0(int[] a, int v, int h, int indeks) {
+        bytt(a, indeks, h);           // skilleverdi a[indeks] flyttes bakerst
+        int pos = parter0(a, v, h - 1, a[h]);  // partisjonerer a[v:h - 1]
+        bytt(a, pos, h);              // bytter for å få skilleverdien på rett plass
+        return pos;                   // returnerer posisjonen til skilleverdien
+    }
+
+    private static void kvikksortering0(int[] a, int v, int h)  // en privat metode
+    {
+        if (v >= h) return;  // a[v:h] er tomt eller har maks ett element
+        int k = sParter0(a, v, h, (v + h) / 2);  // bruker midtverdien
+        kvikksortering0(a, v, k - 1);     // sorterer intervallet a[v:k-1]
+        kvikksortering0(a, k + 1, h);     // sorterer intervallet a[k+1:h]
+    }
+
+    public static void kvikksortering(int[] a, int fra, int til) // a[fra:til>
+    {
+        fratilKontroll(a.length, fra, til);  // sjekker når metoden er offentlig
+        kvikksortering0(a, fra, til - 1);  // v = fra, h = til - 1
+    }
+
+    public static void kvikksortering(int[] a)   // sorterer hele tabellen
+    {
+        kvikksortering0(a, 0, a.length - 1);
+    }
+
+
+    public static boolean partall(int[] a) {
+        int partall = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 == 0) {
+                partall++;
+            }
+        }
+        if (partall != a.length) {
+            return false;
+        }
+        return true;
+    }
+
+
+    public static boolean oddetall(int[] a) {
+        int oddetall = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 1 == 1) {
+                oddetall++;
+            }
+        }
+        if (oddetall != a.length) {
+            return false;
+        }
+        return true;
+    }
+
+
+    public static int[] delsortering(int[] a) {
+        if (partall(a) || oddetall(a) == true) {
+            kvikksortering(a);
+        } else {
+            /* Initialize left and right indexes */
+            int left = 0, right = a.length - 1;
+            while (left < right) {
+                /* Increment left index while we see 0 at left */
+                while (a[left] % 2 == 1 && left < right)
+                    left++;
+
+                /* Decrement right index while we see 1 at right */
+                while (a[right] % 2 == 0 && left < right)
+                    right--;
+
+                if (left < right) {
+                    /* Swap arr[left] and arr[right]*/
+                    int temp = a[left];
+                    a[left] = a[right];
+                    a[right] = temp;
+                    left++;
+                    right--;
+
+
+                    kvikksortering(a);
+                }
+            }
+        }
+        return a;
     }
 
     ///// Oppgave 5 //////////////////////////////////////
@@ -210,6 +331,29 @@ public class Oblig1 {
         return antall;  // returnerer indeks/posisjonen til største verdi
 
     }
+
+    public static void partitionArray(int[] nums) {
+        if (nums == null) return;
+
+        int left = 0, right = nums.length - 1;
+        while (left < right) {
+            // odd number
+            while (left < right && nums[left] % 2 != 0) {
+                left++;
+            }
+            // even number
+            while (left < right && nums[right] % 2 == 0) {
+                right--;
+            }
+            // swap
+            if (left < right) {
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+            }
+        }
+    }
+
 
     public static void main(String[] args) {
     }
