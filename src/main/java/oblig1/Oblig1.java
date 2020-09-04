@@ -123,7 +123,13 @@ public class Oblig1 {
 
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
-        throw new UnsupportedOperationException();
+        int n = a.length;
+        if (n < 2) return;                 // tomt eller en verki
+        if ((k %= n) < 0) k += n;                             // motsatt vei?
+
+        char[] b = Arrays.copyOfRange(a, n - k, n);           // hjelpetabell
+        for (int i = n - 1; i >= k; i--) a[i] = a[i - k];     // forskyver
+        System.arraycopy(b, 0, a, 0, k);
     }
 
     ///// Oppgave 7 //////////////////////////////////////
@@ -173,13 +179,14 @@ public class Oblig1 {
     }
 
     public static void main(String[] args) {
-        int[] c = {4, 9, 3, 1, 1, 5, 7, 8, 10, 2};
-        //System.out.println(ombyttinger(c));
-        //System.out.println(antallUlikeUsortert(c));
-        char[] a = "ABC".toCharArray();
-        rotasjon(a);
+        char [] a= {'A','B','C','D','E','F','G','H','I','J'};
+        rotasjon(a, 10000000);
+
+        System.out.println(a);
+
+
     }
 
-}  // Oblig1
+}
 
 
