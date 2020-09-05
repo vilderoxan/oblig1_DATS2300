@@ -57,8 +57,50 @@ class Oblig1UnitTest {
     }
 
     @org.junit.jupiter.api.Test
+    void kvikksortering1() {
+        int[] a = {3,2,1,6,4,5};
+        Oblig1.kvikksortering(a, 0, 3);
+        int[] expected = {1,2,3,6,4,5};
+        assertArrayEquals(expected, a);
+    }
+
+    @org.junit.jupiter.api.Test
+    void kvikksortering2() {
+        int[] a = {3,2,1,6,4,5};
+        Oblig1.kvikksortering(a, 3, a.length);
+        int[] expected = {3,2,1,4,5,6};
+        assertArrayEquals(expected, a);
+    }
+
+    @org.junit.jupiter.api.Test
+    void separerOddPar() {
+        int[] a = {6,10,9,4,1,3,8,5,2,7};
+        Oblig1.separerOddPar(a);
+        int antallOddetall = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] % 2 != 0) {
+                antallOddetall++;
+            }
+        }
+        for (int i = 0; i < antallOddetall; i++) {
+            assertTrue(a[i] % 2 != 0, String.format("Ikke oddetall [%d]: %d", i, a[i]));
+        }
+        for (int i = antallOddetall; i < a.length; i++) {
+            assertTrue(a[i] % 2 == 0, String.format("Ikke partall [%d]: %d", i, a[i]));
+        }
+    }
+
+    @org.junit.jupiter.api.Test
     void delsortering() {
-        assertEquals(true, false, "Implementer delsortering og denne testen");
+        int[] a = new int[]{1, 2, 3, 4, 5, 6};
+        int[] expected = new int[]{1, 3, 5, 2, 4, 6};
+        Oblig1.delsortering(a);
+        assertArrayEquals(expected, a);
+
+        a = new int[]{6,10,9,4,1,3,8,5,2,7};
+        expected = new int[]{1, 3, 5, 7, 9, 2, 4, 6, 8, 10};
+        Oblig1.delsortering(a);
+        assertArrayEquals(expected, a);
     }
 
     @org.junit.jupiter.api.Test
