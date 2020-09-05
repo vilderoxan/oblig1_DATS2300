@@ -164,7 +164,7 @@ public class Oblig1 {
         int charIndex = 0;
         int charWordIndex = 0;
 
-        // "Hpe, eåg, id"
+        // "Hpe", "eåg", "id" skal bli til "Heipådeg"
         while (charIndex < length) {
             for (int i = 0; i < s.length; i++) { // løper igjennom hvert ord
                 if (charWordIndex < s[i].length()) { // "gard" som passer på at man ikke går utenfor ordet sin lengde
