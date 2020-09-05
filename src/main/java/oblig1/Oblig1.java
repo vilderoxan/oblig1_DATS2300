@@ -96,7 +96,6 @@ public class Oblig1 {
         return count;
     }
 
-    // 1, 4, 1, 4, 2, 3, 2
 
     ///// Oppgave 4 //////////////////////////////////////
 
@@ -180,7 +179,7 @@ public class Oblig1 {
     public static boolean oddetall(int[] a) {
         int oddetall = 0;
         for (int i = 0; i < a.length; i++) {
-            if (a[i] % 1 == 1) {
+            if (a[i] % 2 != 0) {
                 oddetall++;
             }
         }
@@ -190,34 +189,47 @@ public class Oblig1 {
         return true;
     }
 
+    public static void separerOddPar(int[] a) {
+        if (a.length == 0) {
+            return;
+        }
+
+        /* Initialize left and right indexes */
+        int left = 0, right = a.length - 1;
+        while (left < right) {
+            /* Increment left index while we see 0 at left */
+            while (a[left] % 2 != 0 && left < right)
+                left++;
+
+            /* Decrement right index while we see 1 at right */
+            while (a[right] % 2 == 0 && left < right)
+                right--;
+
+            if (left < right) {
+                /* Swap arr[left] and arr[right]*/
+                int temp = a[left];
+                a[left] = a[right];
+                a[right] = temp;
+
+                left++;
+                right--;
+            }
+        }
+    }
 
     public static int[] delsortering(int[] a) {
-        if (partall(a) || oddetall(a) == true) {
+        if (partall(a) || oddetall(a)) {
             kvikksortering(a);
         } else {
-            /* Initialize left and right indexes */
-            int left = 0, right = a.length - 1;
-            while (left < right) {
-                /* Increment left index while we see 0 at left */
-                while (a[left] % 2 == 1 && left < right)
-                    left++;
-
-                /* Decrement right index while we see 1 at right */
-                while (a[right] % 2 == 0 && left < right)
-                    right--;
-
-                if (left < right) {
-                    /* Swap arr[left] and arr[right]*/
-                    int temp = a[left];
-                    a[left] = a[right];
-                    a[right] = temp;
-                    left++;
-                    right--;
-
-
-                    kvikksortering(a);
+            separerOddPar(a);
+            int antallOddetall = 0;
+            for (int i = 0; i < a.length; i++) {
+                if (a[i] % 2 != 0) {
+                    antallOddetall++;
                 }
             }
+            kvikksortering(a, 0, antallOddetall);
+            kvikksortering(a, antallOddetall, a.length);
         }
         return a;
     }
@@ -241,7 +253,6 @@ public class Oblig1 {
         System.out.println(Arrays.toString(a));
     }
 
-
     ///// Oppgave 6 //////////////////////////////////////
     public static void rotasjon(char[] a, int k) {
         int n = a.length;
@@ -255,7 +266,6 @@ public class Oblig1 {
 
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
-
     public static String flett(String s, String t) {
         char[] a = s.toCharArray();
         char[] b = t.toCharArray();
@@ -273,7 +283,6 @@ public class Oblig1 {
 
         return new String(c);
     }
-
 
     /// 7b)
     public static String flett(String... s) {
@@ -311,6 +320,7 @@ public class Oblig1 {
     public static int bokstavNr(char bokstav) {
         throw new UnsupportedOperationException();
     }
+
 
     public static boolean inneholdt(String a, String b) {
         throw new UnsupportedOperationException();
