@@ -127,20 +127,53 @@ public class Oblig1 {
         if (n < 2) return;                 // tomt eller en verki
         if ((k %= n) < 0) k += n;                             // motsatt vei?
 
-        char[] b = Arrays.copyOfRange(a, n - k, n);           // hjelpetabell
+        char[] b = Arrays.copyOfRange(a, n - k, n);      // hjelpetabell
         for (int i = n - 1; i >= k; i--) a[i] = a[i - k];     // forskyver
         System.arraycopy(b, 0, a, 0, k);
     }
 
     ///// Oppgave 7 //////////////////////////////////////
     /// 7a)
+
     public static String flett(String s, String t) {
-        throw new UnsupportedOperationException();
+        char[] a = s.toCharArray();
+        char[] b = t.toCharArray();
+        char[] c = new char[a.length + b.length]; // en tabell av rett størrelse
+
+        int i = 0, j = 0, k = 0;                 // løkkevariabler
+
+        while (i < a.length && j < b.length) {
+            c[k++] = a[i++];      // først en verdi fra a
+            c[k++] = b[j++];      // så en verdi fra b
+        }
+        // vi må ta med resten
+        while (i < a.length) c[k++] = a[i++];
+        while (j < b.length) c[k++] = b[j++];
+
+        return new String(c);
     }
+
 
     /// 7b)
     public static String flett(String... s) {
-        throw new UnsupportedOperationException();
+        int length = 0;
+        for (int i = 0; i < s.length; i++) {
+            length += s[i].length(); // sum av lengden av alle ord, altså hvor mange bokstaver
+        }
+        char[] chars = new char[length];
+        int charIndex = 0;
+        int charWordIndex = 0;
+
+        // "Hpe, eåg, id"
+        while (charIndex < length) {
+            for (int i = 0; i < s.length; i++) { // løper igjennom hvert ord
+                if (charWordIndex < s[i].length()) { // "gard" som passer på at man ikke går utenfor ordet sin lengde
+                    chars[charIndex++] = s[i].charAt(charWordIndex);
+                }
+            }
+            charWordIndex++; // etter at vi har løpt igjennom alle ord en gang hopper vi til neste bokstav for hvert ord
+        }
+        return new String(chars);
     }
 
     ///// Oppgave 8 //////////////////////////////////////
@@ -179,14 +212,8 @@ public class Oblig1 {
     }
 
     public static void main(String[] args) {
-        char [] a= {'A','B','C','D','E','F','G','H','I','J'};
-        rotasjon(a, 10000000);
-
-        System.out.println(a);
-
-
     }
 
-}
+}  // Oblig1
 
 
