@@ -152,7 +152,7 @@ public class Oblig1 {
 
     public static void kvikksortering(int[] a, int fra, int til) // a[fra:til>
     {
-        fratilKontroll(a.length, fra, til);  // sjekker når metoden er offentlig
+        fratilKontroll(a.length, fra, til);
         kvikksortering0(a, fra, til - 1);  // v = fra, h = til - 1
     }
 
@@ -197,11 +197,8 @@ public class Oblig1 {
         /* Initialize left and right indexes */
         int left = 0, right = a.length - 1;
         while (left < right) {
-            /* Increment left index while we see 0 at left */
             while (a[left] % 2 != 0 && left < right)
                 left++;
-
-            /* Decrement right index while we see 1 at right */
             while (a[right] % 2 == 0 && left < right)
                 right--;
 
@@ -326,47 +323,6 @@ public class Oblig1 {
         throw new UnsupportedOperationException();
     }
 
-    public static int maks2(int[] a)   // versjon 2 av maks-metoden
-    {
-        int m = 0;             // indeks til største verdi
-        int maksverdi = a[0];  // største verdi
-        int antall = 0;
-
-        for (int i = 1; i < a.length; i++)
-            if (a[i] > maksverdi) {
-                maksverdi = a[i];  // største verdi oppdateres
-                m = i;             // indeks til største verdi oppdaters
-                antall++;
-            }
-        return antall;  // returnerer indeks/posisjonen til største verdi
-
-    }
-
-    public static void partitionArray(int[] nums) {
-        if (nums == null) return;
-
-        int left = 0, right = nums.length - 1;
-        while (left < right) {
-            // odd number
-            while (left < right && nums[left] % 2 != 0) {
-                left++;
-            }
-            // even number
-            while (left < right && nums[right] % 2 == 0) {
-                right--;
-            }
-            // swap
-            if (left < right) {
-                int temp = nums[left];
-                nums[left] = nums[right];
-                nums[right] = temp;
-            }
-        }
-    }
-
-
-    public static void main(String[] args) {
-    }
 
 }  // Oblig1
 
