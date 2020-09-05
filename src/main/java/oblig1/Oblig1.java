@@ -150,17 +150,30 @@ public class Oblig1 {
         while (i < a.length) c[k++] = a[i++];
         while (j < b.length) c[k++] = b[j++];
 
-        String output =  "";
-        for (int l = 0; l < c.length; l++) {
-            output = output + c[l];
-        }
-        return output;
+        return new String(c);
     }
 
 
     /// 7b)
     public static String flett(String... s) {
-        throw new UnsupportedOperationException();
+        int length = 0;
+        for (int i = 0; i < s.length; i++) {
+            length += s[i].length(); // sum av lengden av alle ord, altså hvor mange bokstaver
+        }
+        char[] chars = new char[length];
+        int charIndex = 0;
+        int charWordIndex = 0;
+
+        // "Hpe, eåg, id"
+        while (charIndex < length) {
+            for (int i = 0; i < s.length; i++) { // løper igjennom hvert ord
+                if (charWordIndex < s[i].length()) { // "gard" som passer på at man ikke går utenfor ordet sin lengde
+                    chars[charIndex++] = s[i].charAt(charWordIndex);
+                }
+            }
+            charWordIndex++; // etter at vi har løpt igjennom alle ord en gang hopper vi til neste bokstav for hvert ord
+        }
+        return new String(chars);
     }
 
     ///// Oppgave 8 //////////////////////////////////////
@@ -199,20 +212,6 @@ public class Oblig1 {
     }
 
     public static void main(String[] args) {
-        // String s = "ABC";
-        // String t = "DEF";
-        // String out = flett(s, t);
-        // System.out.print(out);
-
-
-
-        String[] a = {"Vilde", "Fauchald"};
-        String h = a[0].getChars();
-
-        a[0].charAt(0);
-        String[] s = new String[a[0].getChars(0, a[0].length());]
-
-        // GJØRE 4 og 7b!!
     }
 
 }  // Oblig1
