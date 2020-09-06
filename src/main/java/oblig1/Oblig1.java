@@ -304,9 +304,51 @@ public class Oblig1 {
     }
 
     ///// Oppgave 8 //////////////////////////////////////
-    public static int[] indekssortering(int[] a) {
-        throw new UnsupportedOperationException();
+
+    public static int min(int[] a, int fra, int til) {
+        if (fra < 0 || til > a.length || fra >= til)
+            throw new IllegalArgumentException("Illegalt intervall!");
+        int m = fra; // indeks til minste verdi.
+        int minverdi = a[fra];
+
+        for (int i = fra + 1; i < til; i++) {
+            if (a[i] < minverdi) {
+                m = i;
+                minverdi = a[m];
+            }
+        }
+        return m;
     }
+
+    public static int[] indekssortering(int[] a) {
+        int[] indices = new int[a.length];
+        int[] b = a.clone();
+        kvikksortering(b);
+        int c = 0; //antall indekser man har funnet ut av, altså count
+        for (int bi = 0; bi < b.length; bi++) {
+            int i = 0;
+            for (int ai = 0; ai < a.length; ai++) {
+                boolean visited = false;
+                for (int j = 0; j < c; j++) {
+                    if (indices[j] == ai) {
+                        visited = true;
+                        break;
+                    }
+                }
+                if (visited) {
+                    continue;
+                }
+                if (a[ai] == b[bi]) {
+                    i = ai;
+                    c++;
+                    break;
+                }
+            }
+            indices[bi] = i;
+        }
+        return indices;
+    }
+
 
     ///// Oppgave 9 //////////////////////////////////////
     public static int[] tredjeMin(int[] a) {
@@ -322,7 +364,6 @@ public class Oblig1 {
     public static boolean inneholdt(String a, String b) {
         throw new UnsupportedOperationException();
     }
-
 
 }  // Oblig1
 
