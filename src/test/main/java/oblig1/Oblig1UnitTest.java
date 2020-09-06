@@ -115,16 +115,6 @@ class Oblig1UnitTest {
         assertEquals(true, false, "Implementer flett og denne testen");
     }
 
-
-    @org.junit.jupiter.api.Test
-    void min() {
-        int[] a = {1, 2, 3, 4, 5};
-        assertEquals(0, Oblig1.min(a, 0, a.length));
-        int[] b = {6, 90, 3, 100, 3, 5};
-        assertEquals(2, Oblig1.min(b, 0, b.length));
-        assertEquals(4, Oblig1.min(b, 3, b.length));
-    }
-
     @org.junit.jupiter.api.Test
     void indekssortering() {
         int[] a = new int[]{1, 2, 3, 4, 5, 6};

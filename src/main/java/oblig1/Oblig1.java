@@ -305,21 +305,6 @@ public class Oblig1 {
 
     ///// Oppgave 8 //////////////////////////////////////
 
-    public static int min(int[] a, int fra, int til) {
-        if (fra < 0 || til > a.length || fra >= til)
-            throw new IllegalArgumentException("Illegalt intervall!");
-        int m = fra; // indeks til minste verdi.
-        int minverdi = a[fra];
-
-        for (int i = fra + 1; i < til; i++) {
-            if (a[i] < minverdi) {
-                m = i;
-                minverdi = a[m];
-            }
-        }
-        return m;
-    }
-
     public static int[] indekssortering(int[] a) {
         int[] indices = new int[a.length];
         int[] b = a.clone();
