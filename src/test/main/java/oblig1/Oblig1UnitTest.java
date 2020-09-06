@@ -1,5 +1,7 @@
 package oblig1;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -58,23 +60,23 @@ class Oblig1UnitTest {
 
     @org.junit.jupiter.api.Test
     void kvikksortering1() {
-        int[] a = {3,2,1,6,4,5};
+        int[] a = {3, 2, 1, 6, 4, 5};
         Oblig1.kvikksortering(a, 0, 3);
-        int[] expected = {1,2,3,6,4,5};
+        int[] expected = {1, 2, 3, 6, 4, 5};
         assertArrayEquals(expected, a);
     }
 
     @org.junit.jupiter.api.Test
     void kvikksortering2() {
-        int[] a = {3,2,1,6,4,5};
+        int[] a = {3, 2, 1, 6, 4, 5};
         Oblig1.kvikksortering(a, 3, a.length);
-        int[] expected = {3,2,1,4,5,6};
+        int[] expected = {3, 2, 1, 4, 5, 6};
         assertArrayEquals(expected, a);
     }
 
     @org.junit.jupiter.api.Test
     void separerOddPar() {
-        int[] a = {6,10,9,4,1,3,8,5,2,7};
+        int[] a = {6, 10, 9, 4, 1, 3, 8, 5, 2, 7};
         Oblig1.separerOddPar(a);
         int antallOddetall = 0;
         for (int i = 0; i < a.length; i++) {
@@ -97,7 +99,7 @@ class Oblig1UnitTest {
         Oblig1.delsortering(a);
         assertArrayEquals(expected, a);
 
-        a = new int[]{6,10,9,4,1,3,8,5,2,7};
+        a = new int[]{6, 10, 9, 4, 1, 3, 8, 5, 2, 7};
         expected = new int[]{1, 3, 5, 7, 9, 2, 4, 6, 8, 10};
         Oblig1.delsortering(a);
         assertArrayEquals(expected, a);
@@ -113,9 +115,26 @@ class Oblig1UnitTest {
         assertEquals(true, false, "Implementer flett og denne testen");
     }
 
+
+    @org.junit.jupiter.api.Test
+    void min() {
+        int[] a = {1, 2, 3, 4, 5};
+        assertEquals(0, Oblig1.min(a, 0, a.length));
+        int[] b = {6, 90, 3, 100, 3, 5};
+        assertEquals(2, Oblig1.min(b, 0, b.length));
+        assertEquals(4, Oblig1.min(b, 3, b.length));
+    }
+
     @org.junit.jupiter.api.Test
     void indekssortering() {
-        assertEquals(true, false, "Implementer indekssortering og denne testen");
+        int[] a = new int[]{1, 2, 3, 4, 5, 6};
+        int[] aIndexes = Oblig1.indekssortering(a);
+        int[] expected = new int[]{0, 1, 2, 3, 4, 5};
+        assertArrayEquals(expected, aIndexes, Arrays.toString(aIndexes));
+        int[] b = new int[]{5, 2, 8, 3, 5, 10, 7, 5, 2, 10, 6};
+        int[] bIndexes = Oblig1.indekssortering(b);
+        int[] expected2 = new int[]{1, 8, 3, 0, 4, 7, 10, 6, 2, 5, 9};
+        assertArrayEquals(expected2, bIndexes, Arrays.toString(bIndexes));
     }
 
     @org.junit.jupiter.api.Test
