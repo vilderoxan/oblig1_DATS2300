@@ -309,12 +309,11 @@ public class Oblig1 {
         int[] indices = new int[a.length];
         int[] b = a.clone();
         kvikksortering(b);
-        int c = 0; //antall indekser man har funnet ut av, altså count
         for (int bi = 0; bi < b.length; bi++) {
-            int i = 0;
-            for (int ai = 0; ai < a.length; ai++) {
+            int ai = 0;
+            for (; ai < a.length; ai++) {
                 boolean visited = false;
-                for (int j = 0; j < c; j++) {
+                for (int j = 0; j < bi; j++) {
                     if (indices[j] == ai) {
                         visited = true;
                         break;
@@ -324,12 +323,10 @@ public class Oblig1 {
                     continue;
                 }
                 if (a[ai] == b[bi]) {
-                    i = ai;
-                    c++;
                     break;
                 }
             }
-            indices[bi] = i;
+            indices[bi] = ai;
         }
         return indices;
     }
