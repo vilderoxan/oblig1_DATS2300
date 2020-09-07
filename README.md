@@ -15,3 +15,9 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 - Oppgave 8 har vi samarbeidet om 
 - Vi har generelt jobbet veldig tett og sittet sammen på skolen selv
 om vi har brukt git. 
+
+# Kjøring av testprogrammet
+
+Test for oppgave 1 til og med 8 fungerer. 
+Siden vi bare er to stykker på gruppen har vi ikke gjort oppgave 9 og 10 enda.
+Hvis vi får tid før fristen implementerer vi de to siste metodene også.
