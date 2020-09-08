@@ -21,3 +21,7 @@ om vi har brukt git.
 Test for oppgave 1 til og med 8 fungerer. 
 Siden vi bare er to stykker på gruppen har vi ikke gjort oppgave 9 og 10 enda.
 Hvis vi får tid før fristen implementerer vi de to siste metodene også.
+
+# Svar på teorioppgaver til oppgave 1
+
+Svar på teorispørsmålene ligger i teori.txt under Src - main - java - oblig1

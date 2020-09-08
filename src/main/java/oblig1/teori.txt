@@ -46,5 +46,9 @@ bli n(n-1)/4 ombyttinger
 
   Begge maks-metodene må uansett løpe igjennom hele arrayet men maks-metoden som vi har sett på
   tidligere bytter ikke om indeksen til det største tallet med mindre tallet er større.
+  Hvis n er forskjellige tall i rekkefølge i den tidligere maks-metoden,
+  vil gjennomsnittlig Hn − 1 av dem være større enn det største av de foran.
+  Hn - 1 er lik O(log(n)).
+  Fra maks-metoden i denne obligen har vi bobling som er = O(n)
 
-
+  Log(n) er raskere enn n og derfor vil den tidligere maks-metoden vi har jobbet med være bedre.
